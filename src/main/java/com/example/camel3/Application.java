@@ -9,6 +9,10 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.servlet.CamelHttpTransportServlet;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.model.rest.RestBindingMode;
+import org.apache.cxf.Bus;
+import org.apache.cxf.endpoint.Server;
+import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,6 +25,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+
 @SpringBootApplication(exclude = { WebSocketServletAutoConfiguration.class, AopAutoConfiguration.class, OAuth2ResourceServerAutoConfiguration.class, EmbeddedWebServerFactoryCustomizerAutoConfiguration.class })
 public class Application {
 
@@ -30,9 +36,24 @@ public class Application {
 	@Value("${baeldung.api.path}")
 	String contextPath;
 
+	@Autowired
+	private Bus bus;
+
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
+
+
+//	@Bean
+//	public Server rsServer() {
+//		JAXRSServerFactoryBean endpoint = new JAXRSServerFactoryBean();
+//		endpoint.setBus(bus);
+//		endpoint.setAddress("/");
+//		// Register 2 JAX-RS root resources supporting "/sayHello/{id}" and "/sayHello2/{id}" relative paths
+//		endpoint.setServiceBeans(Arrays.<Object>asList(new HelloServiceImpl1(), new HelloServiceImpl2()));
+//		//endpoint.setFeatures(Arrays.asList(new Swagger2Feature()));
+//		return endpoint.create();
+//	}
 
 	@Bean
 	ServletRegistrationBean servletRegistrationBean() {

@@ -58,6 +58,45 @@
 			<artifactId>camel-test-spring-junit5</artifactId>
 			<version>3.18.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.camel.springboot</groupId>
+			<artifactId>camel-cxf-starter</artifactId>
+			<version>3.15.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+			<version>3.4.1</version>
+		</dependency>
+
+		<!-- CXF -->
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-spring-boot-starter-jaxrs</artifactId>
+			<version>3.4.5</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.camel/camel-core -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-core</artifactId>
+			<version>3.15.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.camel.springboot</groupId>
+			<artifactId>camel-directvm-starter</artifactId>
+			<version>3.15.0</version>
+			<!-- use the same version as your Camel core version -->
+		</dependency>
+
 	</dependencies>
 
 	<build>
